@@ -3,6 +3,8 @@ require 'sinatra/base'
 #set :session_secret, "whatever"
 
 class Battle < Sinatra::Base
+  enable :sessions
+
   get '/test'do
     "Testing infrastructure working"
   end
@@ -13,8 +15,14 @@ class Battle < Sinatra::Base
 
   post '/names' do
     p params
-    @player1 = params[:player1]
-    @player2 = params[:player2]
+    session[:player1] = params[:player1]
+    session[:player2] = params[:player2]
+    redirect '/play'
+  end
+
+  get '/play' do
+    @player1 = session[:player1]
+    @player2 = session[:player2]
     erb(:play)
   end
   run! if app_file == $0
