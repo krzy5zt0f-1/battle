@@ -4,7 +4,7 @@ require 'capybara/rspec'
 
 feature 'Testing infrastructure' do
   scenario 'can run app and check the page content' do
-    visit('/')
+    visit('/test')
     expect(page).to  have_content('Testing infrastructure working')
   end
 end
