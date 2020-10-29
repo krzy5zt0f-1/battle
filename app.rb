@@ -30,8 +30,12 @@ class Battle < Sinatra::Base
     @player2 = $game.player2.name
     $game.attack
     $game.switch
-    erb(:attack)
-
+    $game.player1.hp == 0 || $game.player2.hp == 0 ? redirect('/gameover') : erb(:attack)
+  end
+  get '/gameover' do
+    @player1 = $game.player1.name
+    @player2 = $game.player2.name
+    erb(:gameover)
   end
   run! if app_file == $0
 end
