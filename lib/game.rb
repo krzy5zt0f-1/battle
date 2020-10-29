@@ -16,11 +16,11 @@ require_relative  'player'
    end
 
    def attack
-     @current_state ? @player2.receive_damage : @player1.receive_damage
+     @current_turn ? @player2.receive_damage : @player1.receive_damage
    end
 
    def switch
-     !@current_state
+    @current_turn = !@current_turn
 
    end
 

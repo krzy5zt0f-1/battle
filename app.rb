@@ -31,6 +31,7 @@ class Battle < Sinatra::Base
     $game.attack
     $game.switch
     erb(:attack)
+
   end
   run! if app_file == $0
 end

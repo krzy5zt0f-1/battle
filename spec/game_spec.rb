@@ -8,7 +8,6 @@ describe Game do
 
   it { is_expected.to respond_to(:attack_player1) }
   it { is_expected.to respond_to(:attack_player2) }
-  it { is_expected.to respond_to(:fight) }
 
   describe "#attack_player1" do
     it "damages the player1" do
