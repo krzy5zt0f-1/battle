@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require './lib/player'
+require './lib/game'
 #require 'shotgun'
 #set :session_secret, "whatever"
 
@@ -27,9 +27,10 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
+    game = Game.new
     @player1 = $player1.name
     @player2 = $player2.name
-    $player1.attack($player2)
+    game.attack($player2)
     erb(:attack)
   end
   run! if app_file == $0
