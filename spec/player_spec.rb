@@ -4,6 +4,7 @@ describe Player do
   subject { described_class.new("Name") }
   it { is_expected.to respond_to(:name) }
   it { is_expected.to respond_to(:hp) }
+  it { is_expected.to respond_to(:attack) }
 
   describe ".name" do
     it "returns name of a player" do
@@ -13,7 +14,20 @@ describe Player do
 
   describe ".hp" do
     it "returns name of a player" do
-      expect(subject.hp).to eq 60
+      expect(subject.hp).to eq Player::DEFAULT_HP
+    end
+  end
+
+  describe ".receive_damage" do
+    it "reduces the player hp" do
+      expect { subject.receive_damage}.to change { subject.hp}.by(-10)
+    end
+  end
+  describe "#attack" do
+    it "damages the player" do
+      to_be_attacked = Player.new("attack_me")
+      expect(to_be_attacked).to receive(:receive_damage)
+      subject.attack(to_be_attacked)
     end
   end
 end
