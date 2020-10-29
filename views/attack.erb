@@ -1,4 +1,13 @@
+<h3> Attacked! </h3>
+<% if !$game.current_turn %>
 <%= @player1 %> attacked <%= @player2 %>!
 <form action="/play">
   <input type="submit" value="OK!">
 </form>
+<% else %>
+<%= @player2 %> attacked <%= @player1 %>!
+<form action="/play">
+  <input type="submit" value="OK!">
+</form>
+
+<% end %>

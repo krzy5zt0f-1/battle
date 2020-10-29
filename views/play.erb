@@ -1,7 +1,9 @@
- <%= @player1 %> vs. <%= @player2 %>
-
- <%= @player1 %>: <%= $game.player1.hp %>HP
- <%= @player2 %>: <%= $game.player2.hp %>HP
+<% if $game.current_turn %>
+<h3> <%=@player1 %>'s turn! </h3>
+<% else %>
+<h3> <%=@player2 %>'s turn! </h3>
+<% end %>
+ <%= @player1 %>: <%= $game.player1.hp %>HP vs. <%= @player2 %>: <%= $game.player2.hp %>HP
 
  <form action="/attack">
    <input type="submit" value="Attack">
