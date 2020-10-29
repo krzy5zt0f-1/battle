@@ -4,6 +4,7 @@ require_relative  'player'
    def initialize(player1_instance, player2_instance)
      @player1 = player1_instance
      @player2 = player2_instance
+     @current_turn = true
    end
 
    def attack_player1
@@ -13,4 +14,15 @@ require_relative  'player'
    def attack_player2
      @player2.receive_damage
    end
+
+   def attack
+     @current_state ? @player2.receive_damage : @player1.receive_damage
+   end
+
+   def switch
+     !@current_state
+
+   end
+
+
  end

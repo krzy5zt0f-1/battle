@@ -28,7 +28,8 @@ class Battle < Sinatra::Base
   get '/attack' do
     @player1 = $game.player1.name
     @player2 = $game.player2.name
-    $game.attack_player2
+    $game.attack
+    $game.switch
     erb(:attack)
   end
   run! if app_file == $0
